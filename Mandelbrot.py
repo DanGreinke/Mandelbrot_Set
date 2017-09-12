@@ -28,7 +28,7 @@ y_max_value = center[1] + (half_width*y_sample)/x_sample
 x_current_value = x_min_value
 y_current_value = y_min_value
 
-#TODO attempt to open csv file that fits desired parameters
+# attempt to open csv file that fits desired parameters
 have_file = os.path.exists('C:\\Your\\File\\Path\\Here\\' + 'Mandelbrot_Set_' + str(x_res) + '_by_' + str(y_res) + '_' + str(x_min_value) + "X_to_" + str(x_max_value) + "X_by_" + str(y_min_value) + "Y_to_" + str(y_max_value)+ 'Y.csv')
 #if no suitable file found, calculate set and save to csv file.
 while have_file == False:
@@ -129,7 +129,6 @@ if have_file == True:
                     elif blue > 255:
                         blue = 255
             im.putpixel((x_px, y_px), (red, green, blue))
-            #TODO implement new color scheme
     timestamp = time.strftime("%Y%m%d%H%M%S")
     im.save('Mandelbrot_Set_' + str(x_res) + 'x' + str(y_res) + '_' + str(timestamp) + '.png')
     resultFile.close()
