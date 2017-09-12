@@ -1,10 +1,8 @@
 #! python3
-# This program checks individual points and reports whether they are in the mandelbrot set.
+# This program samples points in an ROI about the Mandelbrot set and generates an image of the mandelbrot set.
 #
 # An input point must survive at least 1000 iterations without moving past a distance of 2 from
 # the origin to be considered a part of the set.
-
-# My Display is 1366 px by 768 px
 
 import math, pprint, PIL, csv, os, time
 from PIL import ImageColor, Image
@@ -31,7 +29,7 @@ x_current_value = x_min_value
 y_current_value = y_min_value
 
 #TODO attempt to open csv file that fits desired parameters
-have_file = os.path.exists('C:\\Users\\dgrei\\OneDrive\\Documents\\Python_Scripts\\Mandelbrot\\Mandelbrot_Set\\' + 'Mandelbrot_Set_' + str(x_res) + '_by_' + str(y_res) + '_' + str(x_min_value) + "X_to_" + str(x_max_value) + "X_by_" + str(y_min_value) + "Y_to_" + str(y_max_value)+ 'Y.csv')
+have_file = os.path.exists('C:\\Your\\File\\Path\\Here\\' + 'Mandelbrot_Set_' + str(x_res) + '_by_' + str(y_res) + '_' + str(x_min_value) + "X_to_" + str(x_max_value) + "X_by_" + str(y_min_value) + "Y_to_" + str(y_max_value)+ 'Y.csv')
 #if no suitable file found, calculate set and save to csv file.
 while have_file == False:
     resultFile = open('Mandelbrot_Set_' + str(x_res) + '_by_' + str(y_res) + '_' + str(x_min_value) + "X_to_" + str(x_max_value) + "X_by_" + str(y_min_value) + "Y_to_" + str(y_max_value)+ 'Y.csv', 'w', newline='')
@@ -62,7 +60,7 @@ while have_file == False:
                 iteration += 1
                 if iteration == max_iteration:
                     outputWriter.writerow([Re, Im, iteration])
-                elif x*x + y*y >= 2*2:
+                elif x*x + y*y >= 4:
                     outputWriter.writerow([Re, Im, iteration])
 
     resultFile.close()
